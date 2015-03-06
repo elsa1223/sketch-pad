@@ -1,16 +1,20 @@
 $(document).ready(function() {
-	for (i = 0; i < 561; i++) {
+	for (i = 0; i < 800; i++) {
 		$(".container").append('<div class="indi"></div>');
 	};
 	$("#populate").click(function() {
-		var boxes = document.getElementById('count').value;
-		for (i = 0; i < boxes; i++) {
-			$(".container").append('<div class="indi"></div>');
+		var newrows = document.getElementById('count').value;
+		for (i = 0; i < newrows; i++) {
+			var j = 0;
+			while (j < 20) {
+				$(".container").append('<div class="indi"></div>');
+				j++;
+			};
 		};
 	});
 	$("#reset").click(function() {
 		$(".indi").remove();
-		for (i = 0; i < 561; i++) {
+		for (i = 0; i < 800; i++) {
 			$(".container").append('<div class="indi"></div>');
 		};
 		radiobtn = document.getElementById("opt1");
@@ -23,17 +27,14 @@ $(document).ready(function() {
 		} else if (radio === "2") {
 			$(this).addClass("blue");
 		} else {
-			$(this).css('background-color', "#C9C9C9");
+			$(this).addClass("green");
 		}
 	});
 	$(".container").on("mouseleave", ".indi", function() {
 		var radio = $('input[name= "option"]:checked').val();
 		if (radio === "1") {
-			$(this).fadeTo("slow", 1);
-		} else if (radio === "2") {
-		//	$(this).removeClass("blue");
-		} else {
-			$(this).css('background-color', "#4B4B4B");
+			$(this).fadeTo("fast", 1);
+			$(this).removeClass("blue green");
 		}
 	});
 });
